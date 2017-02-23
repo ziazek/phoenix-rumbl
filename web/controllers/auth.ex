@@ -1,6 +1,7 @@
 defmodule Rumbl.Auth do
   import Plug.Conn 
   import Comeonin.Bcrypt, only: [checkpw: 2, dummy_checkpw: 0]
+  import Phoenix.Controller, only: [put_flash: 3, redirect: 2]
   alias Rumbl.Router.Helpers
 
   def init(opts) do
@@ -45,7 +46,7 @@ defmodule Rumbl.Auth do
     else
       conn
       |> put_flash(:error, "You must be logged in to access that page.")
-      |> redirect(to: page_path(conn, :index))
+      |> redirect(to: Helpers.page_path(conn, :index))
       |> halt()
     end
   end
