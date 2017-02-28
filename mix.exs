@@ -42,6 +42,7 @@ defmodule Rumbl.Mixfile do
       {:cowboy, "~> 1.0"},
       {:comeonin, "~> 3.0"},
       {:mix_test_watch, "~> 0.2", only: :dev},
+      {:sweet_xml, "~> 0.6.0"}
     ]
   end
 

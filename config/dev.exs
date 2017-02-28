@@ -45,3 +45,5 @@ config :rumbl, Rumbl.Repo,
 # Configure comeonin library
 config :comeonin, :bcrypt_log_rounds, 13
 config :comeonin, :pbkdf2_rounds, 160_000
+
+import_config "dev.secret.exs"

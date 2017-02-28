@@ -38,7 +38,8 @@ let Video = {
     
     vidChannel.join()
       .receive("ok", resp => {
-        // annotations.forEach( ann => this.renderAnnotation(msgContainer, ann) )
+        let ids = resp.annotations.map(ann => ann.id)
+        if (ids.length > 0) { vidChannel.params.last_seen_id = Math.max(...ids) }
         this.scheduleMessages(msgContainer, resp.annotations)
       })
       .receive("error", reason => console.log("join failed", reason))
