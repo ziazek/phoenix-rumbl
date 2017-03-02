@@ -1,5 +1,15 @@
 # Rumbl
 
+## Cloning
+
+  * Clone the [Rumbrella app](https://github.com/ziazek/phoenix-rumbrella).
+
+```
+git clone --recursive <project url>
+```
+
+## Starting
+
 To start your Phoenix app:
 
   * Install dependencies with `mix deps.get`
