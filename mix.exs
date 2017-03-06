@@ -24,7 +24,7 @@ defmodule Rumbl.Mixfile do
     [mod: {Rumbl, []},
      applications: [:phoenix, :phoenix_pubsub, :phoenix_html, 
       :cowboy, :logger, :gettext, 
-      :phoenix_ecto, :postgrex, :comeonin, :info_sys]]
+      :phoenix_ecto, :postgrex, :comeonin, :info_sys, :distillery, :edeliver]]
   end
 
   # Specifies which paths to compile per environment.
@@ -46,7 +46,9 @@ defmodule Rumbl.Mixfile do
       {:cowboy, "~> 1.0"},
       {:comeonin, "~> 3.0"},
       {:mix_test_watch, "~> 0.2", only: :dev},
-      {:info_sys, in_umbrella: true}
+      {:info_sys, in_umbrella: true},
+      # {:edeliver, "~> 1.4.2"},
+      {:distillery, ">= 0.8.0", warn_missing: false},
     ]
   end
 
