@@ -28,7 +28,6 @@ environment :dev do
 end
 
 environment :prod do
-  plugin Rumbl.PhoenixDigestTask
   set include_erts: true
   set include_src: false
   set cookie: :"%4Lm?L/<^O&ef}$cT1W4,%HP2S~/|xp.1)Ga9WCj9&!t]jd}QQ<~GVT<Yl?<W&Dp"
