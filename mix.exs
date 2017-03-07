@@ -3,7 +3,7 @@ defmodule Rumbl.Mixfile do
 
   def project do
     [app: :rumbl,
-     version: "0.0.9",
+     version: "0.0.10",
      elixir: "~> 1.2",
      elixirc_paths: elixirc_paths(Mix.env),
      compilers: [:phoenix, :gettext] ++ Mix.compilers,
@@ -19,8 +19,8 @@ defmodule Rumbl.Mixfile do
   def application do
     [mod: {Rumbl, []},
      applications: [:phoenix, :phoenix_pubsub, :phoenix_html, 
-      :cowboy, :logger, :gettext, 
-      :phoenix_ecto, :postgrex, :comeonin, :sweet_xml, :edeliver, :distillery]]
+      :cowboy, :logger, :gettext, :phoenix_ecto, :postgrex, 
+      :comeonin, :sweet_xml, :inets, :edeliver, :distillery]]
   end
 
   # Specifies which paths to compile per environment.
