@@ -21,6 +21,12 @@ use Mix.Releases.Config,
 # when building in that environment, this combination of release
 # and environment configuration is called a profile
 
+environment :prod do
+  set plugins: [Rumbl.PhoenixDigestTask]
+  set include_erts: true
+  set include_src: false
+end
+
 environment :dev do
   set dev_mode: true
   set include_erts: false
