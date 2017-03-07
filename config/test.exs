@@ -21,3 +21,7 @@ config :rumbl, Rumbl.Repo,
 # Configure comeonin library
 config :comeonin, :bcrypt_log_rounds, 1
 config :comeonin, :pbkdf2_rounds, 1
+
+config  :rumbl, :wolfram,
+        app_id: "1234", 
+        http_client: Rumbl.InfoSys.Test.HTTPClient

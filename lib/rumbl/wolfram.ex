@@ -1,6 +1,20 @@
+defmodule Rumbl.InfoSys.Test.HTTPClient do
+  @wolfram_xml File.read!("test/fixtures/wolfram.xml")
+
+  def request(url) do
+    url = to_string(url)
+    cond do
+      String.contains?(url, "1%20+%201") -> {:ok, {[], [], @wolfram_xml}}
+      true -> {:ok, {[], [], "<queryresult></queryresult>"}} 
+    end
+  end
+end
+
 defmodule Rumbl.InfoSys.Wolfram do
   import SweetXml
   alias Rumbl.InfoSys.Result
+
+  @http Application.get_env(:rumbl, :wolfram)[:http_client] || :httpc
 
   def start_link(query, query_ref, owner, limit) do
     Task.start_link(__MODULE__, :fetch, [query, query_ref, owner, limit])
@@ -24,7 +38,7 @@ defmodule Rumbl.InfoSys.Wolfram do
   end
 
   defp fetch_xml(query_str) do
-    {:ok, {_, _, body}} = :httpc.request(
+    {:ok, {_, _, body}} = @http.request(
       String.to_char_list("http://api.wolframalpha.com/v2/query" <>
         "?appid=#{app_id()}" <>
         "&input=#{URI.encode(query_str)}&format=plaintext"))
