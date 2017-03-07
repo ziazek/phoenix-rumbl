@@ -4,7 +4,7 @@ BUILD_HOST="139.59.99.144"
 BUILD_USER="deploy"
 BUILD_AT="/tmp/edeliver/rumbl/builds"
 
-RELEASE_DIR="$BUILD_AT/rel/$APP"
+# RELEASE_DIR="$BUILD_AT/rel/$APP"
 
 STAGING_HOSTS="139.59.99.144"
 STAGING_USER="deploy"
