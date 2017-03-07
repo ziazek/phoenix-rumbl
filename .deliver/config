@@ -4,7 +4,7 @@ BUILD_HOST="139.59.99.144"
 BUILD_USER="deploy"
 BUILD_AT="/tmp/edeliver/rumbl/builds"
 
-RELEASE_DIR="/home/deploy/$APP"
+RELEASE_DIR="/tmp/edeliver/$APP/builds/_build/prod/rel/$APP"
 
 STAGING_HOSTS="139.59.99.144"
 STAGING_USER="deploy"
@@ -13,6 +13,8 @@ TEST_AT="/home/deploy/staging"
 PRODUCTION_HOSTS="139.59.99.144"
 PRODUCTION_USER="deploy"
 DELIVER_TO="/home/deploy"
+
+AUTO_VERSION=commit-count+git-revision+branch-unless-master
 
 
 # For *Phoenix* projects, symlink prod.secret.exs to our tmp source
