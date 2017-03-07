@@ -1,4 +1,4 @@
-defmodule InfoSys do
+defmodule Rumbl.InfoSys do
   @backends [Rumbl.InfoSys.Wolfram]
 
   defmodule Result do

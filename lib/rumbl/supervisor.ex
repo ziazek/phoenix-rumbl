@@ -1,4 +1,4 @@
-defmodule InfoSys.Supervisor do
+defmodule Rumbl.InfoSys.Supervisor do
   use Supervisor 
 
   def start_link() do
