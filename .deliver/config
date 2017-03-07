@@ -6,7 +6,12 @@ BUILD_AT="/tmp/edeliver/rumbl/builds"
 
 STAGING_HOSTS="139.59.99.144"
 STAGING_USER="deploy"
+TEST_AT="/home/deploy/staging"
+
+PRODUCTION_HOSTS="139.59.99.144"
+PRODUCTION_USER="deploy"
 DELIVER_TO="/home/deploy"
+
 
 # For *Phoenix* projects, symlink prod.secret.exs to our tmp source
 pre_erlang_get_and_update_deps() {
