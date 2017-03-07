@@ -20,7 +20,7 @@ defmodule Rumbl.Mixfile do
     [mod: {Rumbl, []},
      applications: [:phoenix, :phoenix_pubsub, :phoenix_html, 
       :cowboy, :logger, :gettext, 
-      :phoenix_ecto, :postgrex, :comeonin, :edeliver, :sweet_xml]]
+      :phoenix_ecto, :postgrex, :comeonin, :sweet_xml, :edeliver, :distillery]]
   end
 
   # Specifies which paths to compile per environment.
