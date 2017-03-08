@@ -20,6 +20,9 @@ let Video = {
       let payload = {body: msgInput.value, at: Player.getCurrentTime()}
       vidChannel.push("new_annotation", payload)
                 .receive("error", e => console.log(e))
+                .receive("unauthorized", e => {
+                  this.renderFlash(msgContainer, e)
+                })
       msgInput.value = ""
     })
 
@@ -55,6 +58,15 @@ let Video = {
       <a href="#" data-seek="${this.esc(at)}">
         <b>${this.esc(user.username)}</b>: ${this.esc(body)}
       </a>
+    `
+    msgContainer.appendChild(template)
+    msgContainer.scrollTop = msgContainer.scrollHeight
+  },
+  renderFlash(msgContainer, {message}) {
+    let template = document.createElement("div")
+    template.setAttribute("class", "flash notice")
+    template.innerHTML = `
+      ${message}
     `
     msgContainer.appendChild(template)
     msgContainer.scrollTop = msgContainer.scrollHeight

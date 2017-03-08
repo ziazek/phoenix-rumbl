@@ -1,3 +1,11 @@
 #msg-container {
   min-height: 190px;
+  max-height: 320px;
+  overflow: scroll;
+}
+
+.flash.notice {
+  background: #F0FFA6;
+  padding: 5px 10px;
+  margin: 10px 0;
 }

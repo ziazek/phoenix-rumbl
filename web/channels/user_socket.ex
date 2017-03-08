@@ -21,7 +21,7 @@ defmodule Rumbl.UserSocket do
   #
   # See `Phoenix.Token` documentation for examples in
   # performing token verification on connect.
-  def connect(%{"token" => token}, socket) do
+  def connect(%{"token" => token}, socket) when byte_size(token) > 0 do
     case Phoenix.Token.verify(socket, "user socket", token, max_age: @max_age) do
       {:ok, user_id} ->
         {:ok, assign(socket, :user_id, user_id)}
@@ -30,9 +30,13 @@ defmodule Rumbl.UserSocket do
     end
   end
 
-  def connect(_params, _socket), do: :error
+  def connect(%{"token" => token}, socket) do
+    {:ok, socket}
+  end
 
-  # Socket id's are topics that allow you to identify all sockets for a given user:
+  def connect(_params, socket), do: :error
+
+# Socket id's are topics that allow you to identify all sockets for a given user:
   #
   #     def id(socket), do: "users_socket:#{socket.assigns.user_id}"
   #
@@ -42,5 +46,13 @@ defmodule Rumbl.UserSocket do
   #     Rumbl.Endpoint.broadcast("users_socket:#{user.id}", "disconnect", %{})
   #
   # Returning `nil` makes this socket anonymous.
-  def id(socket), do: "users_socket:#{socket.assigns.user_id}"
+  def id(socket) do 
+    cond do
+      socket.assigns[:user_id] ->
+        "users_socket:#{socket.assigns.user_id}"
+      true ->
+        nil
+    end
+  end
+  # def id(socket), do: "users_socket:#{socket.assigns.user_id}"
 end

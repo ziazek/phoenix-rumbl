@@ -19,8 +19,14 @@ defmodule Rumbl.VideoChannel do
   end
 
   def handle_in(event, params, socket) do
-    user = Repo.get(Rumbl.User, socket.assigns.user_id)
-    handle_in(event, params, user, socket)
+    cond do
+      socket.assigns[:user_id] ->
+        user = Repo.get(Rumbl.User, socket.assigns.user_id)
+        handle_in(event, params, user, socket)
+      true ->
+        # broadcast! socket, "unauthorized", %{message: "Please log in to leave a comment."}
+        {:reply, {:unauthorized, %{message: "Please log in to leave a comment."}}, socket}
+    end
   end
 
   def handle_in("new_annotation", params, user, socket) do
